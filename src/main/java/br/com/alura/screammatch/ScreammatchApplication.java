@@ -1,6 +1,9 @@
 package br.com.alura.screammatch;
 
+import br.com.alura.screammatch.model.DadosEpisode;
 import br.com.alura.screammatch.model.DadosSeries;
+import br.com.alura.screammatch.model.DadosTemporada;
+import br.com.alura.screammatch.principal.Principal;
 import br.com.alura.screammatch.services.ConsumoApi;
 import br.com.alura.screammatch.services.ConverteDados;
 import org.springframework.boot.CommandLineRunner;
@@ -12,6 +15,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class ScreammatchApplication implements CommandLineRunner {
@@ -22,12 +27,13 @@ public class ScreammatchApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		var consumoApi = new ConsumoApi();
-		var json = consumoApi.obterDados("http://www.omdbapi.com/?i=tt3896198&apikey=25d2da1e");
-		System.out.println(json);
-		ConverteDados converter = new ConverteDados();
-		DadosSeries dados = converter.obterDados(json, DadosSeries.class);
-		System.out.println(dados);
+		Principal principal = new Principal();
+		principal.exibeMenu();
+
+//
+
+
+		// http://www.omdbapi.com/?t=gilmore+girls&season=1&episode=2&apikey=25d2da1e
 	}
 
 
